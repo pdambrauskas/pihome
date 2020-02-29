@@ -1,0 +1,13 @@
+apiVersion: 1
+
+providers:
+- name: 'Home'
+  folder: ''
+  folderUid: ''
+  type: file
+  disableDeletion: false
+  editable: true
+  updateIntervalSeconds: 10
+  allowUiUpdates: false
+  options:
+    path: /etc/grafana/dashboards
