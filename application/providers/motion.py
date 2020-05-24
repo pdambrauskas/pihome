@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 import threading
+from providers.support.models import Metric
 
 class Motion:
     def __init__(self, pin):
@@ -8,12 +9,12 @@ class Motion:
         self.motions = 0
         GPIO.setup(pin, GPIO.IN)
         self.thread = threading.Thread(target=self._track)
-    
+
     def run(self):
        self.thread.start()
-    
+
     def read(self):
-        return self.motions
+        return [Metric("pihome_movement", self.motions)]
 
     def _track(self):
         while True:

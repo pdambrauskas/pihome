@@ -1,2 +1,4 @@
 RPi.GPIO
 Flask
+pybluez
+python-nmap

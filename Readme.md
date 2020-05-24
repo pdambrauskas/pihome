@@ -4,7 +4,12 @@ For quite some time, I had a spare Raspberry Pi lying around in my place. And on
 
 I have some experience in working with [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/), so I decided to incorporate those tools into my solution. Yes, it does sound like overengineering simple task, you can probably get same results in much simpler way : ).
 
-In this post I'll describe my setup for monitoring room temperature & humidity.
+By deploying this project with all its components, you'll be able to track these metrics:
+- Room temperature
+- Humidity
+- Movement
+- Nearby bluetooth devices
+- Connected network devices
 
 ## Hardware components
 
@@ -62,7 +67,15 @@ It is also possible to add Grafana dashboards to provisioning folder as json fil
 
 ## Connecting everything together
 
-To make everything portable and easy to install, I packed my Flask API to Docker image and configured all services in `docker-compose.yaml`:
+To make everything portable and easy to install, I packed my Flask API to Docker image and configured all services in `docker-compose.yaml`.
+To deploy whole stack you have to add `.env` file with some configuration properties:
+```
+HOST_IP=192.168.1.216
+NETWORK_TO_SCAN=192.168.1.0/24
+GRAFANA_PASSWORD=pihome
+```
+
+After adding `.env`, file run `docker-compose build` & `docker-compose up -d`.
 
 ## Result
 
